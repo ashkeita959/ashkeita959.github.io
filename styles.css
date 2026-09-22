@@ -1,0 +1,191 @@
+/* Force full-screen background fit */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Pixelify Sans", sans-serif;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* when letter opens, remove plaid background */
+body.letter-open {
+    background-image: none;
+    background-color: #f7efe7;
+}
+
+/* Envelope Screen */
+#envelope-container {
+    min-height: 100vh;          /* full viewport height */
+    display: flex;              /* center everything */
+    flex-direction: column;
+    justify-content: center;    /* vertical center */
+    align-items: center;        /* horizontal center */
+    text-align: center;
+    cursor: pointer;
+}
+
+#envelope-container p {
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }   
+}
+
+#envelope{
+    width: 400px;
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+}
+
+#music-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 2000;
+    border: 0;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#letter-container{
+    display: none;
+    position:fixed;
+    inset: 0;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.letter-window{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    aspect-ratio: auto;
+
+    box-sizing: border-box;
+    padding: 40px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-image: url("window.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 125% 155%;   /* width height -> increased height */
+
+    transform: scale(1);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.letter-window.open {
+    opacity: 1;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+p {
+    font-size: 40px;
+}
+
+/* Cat */
+
+.cat {
+    width: 250px;
+    margin: 10px 0px;
+    transition: width 0.4s ease;
+}
+
+.letter-window.final .cat {
+    width: 180px;
+}
+
+/* buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
+.no-wrapper{
+    position: relative;
+}
+
+.btn {
+    width: 120px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.yes-btn,
+.no-btn {
+    width: 120px;
+    height: auto;
+    display: inline-block;
+}
+
+.yes-btn {
+    position:relative;
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.no-btn {
+    z-index: 1;
+    position: relative;
+    transition: transform 0.15s ease;
+    cursor: default;
+}
+
+.final-text {
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 240, 240, 0.5);
+    border-radius: 12px;
+}
+
+/* Smaller final message text */
+.letter-window.final #letter-title {
+    font-size: 22px;   /* try 20px if you want smaller */
+}
+
+/* Smaller date text */
+.letter-window.final .final-text {
+    font-size: 16px;   /* try 14px if you want smaller */
+    padding: 6px 12px;
+  }
