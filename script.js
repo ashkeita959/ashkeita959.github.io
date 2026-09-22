@@ -39,7 +39,7 @@ noBtn.addEventListener("click", () => {
 
 // Final state when YES is clicked
 yesBtn.addEventListener("click", () => {
-  title.textContent = "Yay! I knew you would say yes!";
+  title.textContent = "haha! You can't say no!";
   catImg.src = "cat_dance.gif";
   letterWindow.classList.add("final");
   buttons.style.display = "none";
